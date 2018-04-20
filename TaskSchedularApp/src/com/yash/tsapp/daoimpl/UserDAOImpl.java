@@ -1,5 +1,7 @@
 package com.yash.tsapp.daoimpl;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.yash.tsapp.dao.UserDAO;
@@ -10,7 +12,22 @@ public class UserDAOImpl extends DBUtil implements UserDAO {
 
 	@Override
 	public void insert(User user) {
-		// TODO Auto-generated method stub
+		String sql = "INSERT INTO users (firstname,lastname,email,contact,address,loginname,password) values (?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = getPrepareStatement(sql);
+		try {
+			pstmt.setString(1, user.getFirstname());
+			pstmt.setString(2, user.getLastname());
+			pstmt.setString(3, user.getEmail());
+			pstmt.setString(4, user.getContact());
+			pstmt.setString(5, user.getContact());
+			pstmt.setString(6, user.getLoginname());
+			pstmt.setString(7, user.getPassword());
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

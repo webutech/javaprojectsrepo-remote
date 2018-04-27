@@ -1,5 +1,10 @@
 package com.yash.tsapp.domain;
 
+/** 
+ * User model is used for the data travelling between layers. 
+ * @author sharma.pankaj
+ *
+ */
 public class User {
 	
 	private Integer id;

@@ -8,8 +8,16 @@ import com.yash.tsapp.dao.UserDAO;
 import com.yash.tsapp.domain.User;
 import com.yash.tsapp.util.DBUtil;
 
+/**
+ * UserDAOImpl is the implementation of UserDAO.
+ * @author sharma.pankaj
+ *
+ */
 public class UserDAOImpl extends DBUtil implements UserDAO {
 
+	/**
+	 * insert method will insert the provided user in users table of DB
+	 */
 	@Override
 	public void insert(User user) {
 		String sql = "INSERT INTO users (firstname,lastname,email,contact,address,loginname,password) values (?,?,?,?,?,?,?)";
@@ -19,7 +27,7 @@ public class UserDAOImpl extends DBUtil implements UserDAO {
 			pstmt.setString(2, user.getLastname());
 			pstmt.setString(3, user.getEmail());
 			pstmt.setString(4, user.getContact());
-			pstmt.setString(5, user.getContact());
+			pstmt.setString(5, user.getAddress());
 			pstmt.setString(6, user.getLoginname());
 			pstmt.setString(7, user.getPassword());
 			pstmt.execute();

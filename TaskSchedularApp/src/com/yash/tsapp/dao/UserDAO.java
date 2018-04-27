@@ -4,6 +4,12 @@ import java.util.List;
 
 import com.yash.tsapp.domain.User;
 
+
+/**
+ * UserDAO will perform user related database operations
+ * @author sharma.pankaj
+ *
+ */
 public interface UserDAO {
 	
 	public void insert(User user);

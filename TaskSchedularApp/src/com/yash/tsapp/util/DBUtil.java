@@ -39,7 +39,7 @@ public class DBUtil {
 		return pstmt;
 	}
 	
-	public void closeConnection(){
+	private void closeConnection(){
 		try {
 			con.close();
 		} catch (SQLException e) {
@@ -50,6 +50,7 @@ public class DBUtil {
 	
 	public void closePrepareStatement(){
 		try {
+			closeConnection();
 			pstmt.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

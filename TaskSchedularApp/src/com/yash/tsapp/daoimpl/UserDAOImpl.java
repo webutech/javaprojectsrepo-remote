@@ -19,7 +19,8 @@ public class UserDAOImpl extends DBUtil implements UserDAO {
 	 * insert method will insert the provided user in users table of DB
 	 */
 	@Override
-	public void insert(User user) {
+	public int insert(User user) {
+		int rowAffected = 0; // no row is affected
 		String sql = "INSERT INTO users (firstname,lastname,email,contact,address,loginname,password) values (?,?,?,?,?,?,?)";
 		PreparedStatement pstmt = getPrepareStatement(sql);
 		try {
@@ -31,11 +32,14 @@ public class UserDAOImpl extends DBUtil implements UserDAO {
 			pstmt.setString(6, user.getLoginname());
 			pstmt.setString(7, user.getPassword());
 			pstmt.execute();
+			rowAffected = 1;
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return rowAffected;
 
 	}
 
